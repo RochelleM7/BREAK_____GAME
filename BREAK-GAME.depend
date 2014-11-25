@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1416876011 source:c:\users\brand_000\documents\break-game\brick.cpp
+	"gLibrary.h"
+
+1416876011 c:\users\brand_000\documents\break-game\glibrary.h
+	"point.h"
+	"plotter.h"
+	"ball.h"
+	"paddle.h"
+	"brick.h"
+	"wall.h"
+	"game.h"
+	<iostream>
+	<cmath>
+	<ostream>
+	<istream>
+	<iomanip>
+	<cstdlib>
+	<ctime>
+	<string>
+
+1416876497 c:\users\brand_000\documents\break-game\point.h
+	"gLibrary.h"
+
+1416876011 c:\users\brand_000\documents\break-game\plotter.h
+	<windows.h>
+	<mmsystem.h>
+	<conio.h>
+
+1416876310 c:\users\brand_000\documents\break-game\ball.h
+	"gLibrary.h"
+
+1416876011 c:\users\brand_000\documents\break-game\paddle.h
+	"gLibrary.h"
+
+1416876011 c:\users\brand_000\documents\break-game\brick.h
+	"gLibrary.h"
+
+1416876011 c:\users\brand_000\documents\break-game\wall.h
+	"gLibrary.h"
+
+1416876015 c:\users\brand_000\documents\break-game\game.h
+	"gLibrary.h"
+
+1416876380 source:c:\users\brand_000\documents\break-game\game.cpp
+	"gLibrary.h"
+
+1416876035 source:c:\users\brand_000\documents\break-game\main.cpp
+	"gLibrary.h"
+
+1416876011 source:c:\users\brand_000\documents\break-game\paddle.cpp
+	"gLibrary.h"
+
+1416876011 source:c:\users\brand_000\documents\break-game\plotter.cpp
+	<iostream>
+	"plotter.h"
+
+1416876011 source:c:\users\brand_000\documents\break-game\point.cpp
+	"gLibrary.h"
+
+1416876011 source:c:\users\brand_000\documents\break-game\wall.cpp
+	"gLibrary.h"
+
+1416876011 source:c:\users\brand_000\documents\break-game\ball.cpp
+	"gLibrary.h"
+
