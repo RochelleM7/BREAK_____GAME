@@ -111,9 +111,9 @@ void Game::play()
             {
                 if (wall[r][c].getColor() !=  black)
                 {
-                    if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() +1 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY() )
+                    if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY() )
                     {
-                        if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 10)
+                        if(gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() - 10)
                         {
                             gameBall.setDir(-gameBall.getDir());
                             wall[r][c].setColor(black);
