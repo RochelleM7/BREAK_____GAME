@@ -16,7 +16,8 @@ class brick
     void setColor(ink a);
     char getShape();
     bool ballHitBrick(ball b);
-
+    double reflectionsForSideOfBricks(ball b);
+    double reflectionsForTopandBottomOfBricks(ball b);
 
     private:
     int width, rows;
@@ -28,4 +29,3 @@ class brick
 };
 
 #endif // BRICK_H_INCLUDED
-
