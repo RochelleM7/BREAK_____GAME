@@ -1,5 +1,3 @@
-
-
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
@@ -21,6 +19,7 @@ class Game
     brick wall[WALL_ROWS][WALL_COLS];
     sideBoundariesReflections Reflections;
     bool gameOver, active;
+    Point point;
 
 
 };
