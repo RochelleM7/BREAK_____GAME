@@ -6,7 +6,7 @@
 class ball
 {
     public:
-        ball(Point = Point(), ink = red, char = SQUARE, double = .2, double = 7*3.14/4);
+        ball(Point = Point(), ink = red, char = SQUARE, double = .2, double = 3.14/2);
         void draw(Plotter&);
         void move();
         Point getLoc();
@@ -35,4 +35,3 @@ class ball
 };
 
 #endif // BALL_H_INCLUDED
-
