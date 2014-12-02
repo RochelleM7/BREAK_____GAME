@@ -63,11 +63,19 @@
     double paddleType::ballHitOuterPaddle(ball b)
     {
         double directions;
+        if(b.getOldDir() > 2*3.14)
+        {
+            b.setOldDir(b.getOldDir() - 2*3.14);
+        }
+        if(b.getOldDir() < 0)
+        {
+            b.setOldDir(b.getOldDir() + 2*3.14);
+        }
         if ((loc.getY()) <= (b.getLoc().getY()))
         {
             if ((loc.getX() - width/2) <= (b.getLoc().getX()) && (loc.getX() - width/2 + 3) >= (b.getLoc().getX()))
             {
-                if(b.getOldDir() == 3.14/2 || b.getOldDir() == 5*3.14/6 || b.getOldDir() == 2*3.14/3 || b.getOldDir() == 3*3.14/4 || b.getOldDir() == 3.14/6)
+                if(b.getOldDir() >= 3.14 && b.getOldDir() <= 3*3.14/2)
                 {
                     directions = 5*3.14/6;
                 }
@@ -78,7 +86,7 @@
             }
             if((loc.getX() + width/2 + 2) >= (b.getLoc().getX()) && (loc.getX() + width/2 - 3) <= (b.getLoc().getX()))
             {
-                if(b.getOldDir() == 3.14/2 || b.getOldDir() == 5*3.14/6 || b.getOldDir() == 2*3.14/3 || b.getOldDir() == 3.14/4 || b.getOldDir() == 3.14/6)
+                if(b.getOldDir() >= 3*3.14/2 && b.getOldDir() <= 2*3.14)
                 {
                     directions = 3.14/6;
                 }
@@ -93,11 +101,19 @@
     double paddleType::ballHitInnerPaddle(ball b)
     {
         double directions;
+        if(b.getOldDir() > 2*3.14)
+        {
+            b.setOldDir(b.getOldDir() - 2*3.14);
+        }
+        if(b.getOldDir() < 0)
+        {
+            b.setOldDir(b.getOldDir() + 2*3.14);
+        }
         if ((loc.getY()) <= (b.getLoc().getY()))
         {
             if ((loc.getX() - width/2 + 3) <= (b.getLoc().getX()) && (loc.getX() - width/2 + 10) >= (b.getLoc().getX()))
             {
-                if(b.getOldDir() == 3.14/2 || b.getOldDir() == 5*3.14/6 || b.getOldDir() == 2*3.14/3 || b.getOldDir() == 3*3.14/4)
+                if(b.getOldDir() >= 3.14 && b.getOldDir() <= 3*3.14/2)
                 {
                     directions = 2*3.14/3;
                 }
@@ -108,7 +124,7 @@
             }
             if((loc.getX() + width/2 - 3) >= (b.getLoc().getX()) && (loc.getX() + width/2 - 10) <= (b.getLoc().getX()))
             {
-                if(b.getOldDir() == 3.14/2 || b.getOldDir() == 5*3.14/6 || b.getOldDir() == 2*3.14/3 || b.getOldDir() == 3.14/4 || b.getOldDir() == 3.14/3)
+                if(b.getOldDir() >= 3*3.14/2 && b.getOldDir() <= 2*3.14)
                 {
                     directions = 3.14/3;
                 }
@@ -127,35 +143,9 @@
         {
             if ((loc.getX() - width/2 + 10) <= (b.getLoc().getX()) && (loc.getX() + width/2 - 10) >= (b.getLoc().getX()))
             {
-                if(b.getOldDir() == 3.14/6)
-                {
-                    directions = 3.14/6;
-                }
-                if(b.getOldDir() == 3.14/4)
-                {
-                    directions = 3.14/4;
-                }
-                if(b.getOldDir() == 3.14/3)
-                {
-                    directions = 3.14/3;
-                }
-                if(b.getOldDir() == 5*3.14/6)
-                {
-                    directions = 5*3.14/6;
-                }
-                if(b.getOldDir() == 3*3.14/4)
-                {
-                    directions = 3*3.14/4;
-                }
-                if(b.getOldDir() == 2*3.14/3)
-                {
-                    directions = 2*3.14/3;
-                }
-                if(b.getOldDir() == 3.14/2)
-                {
-                    directions = 3.14/2;
-                }
+                directions = -b.getOldDir();
             }
         }
         return directions;
     }
+
