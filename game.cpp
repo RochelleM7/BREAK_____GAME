@@ -1,4 +1,3 @@
-
 /*
 Authors: Chuks Egbuchunam, Zehao Huang, Jiaqi Ma
          Brandon Scheitlin, Trent Matthews
@@ -36,10 +35,13 @@ The person will know what the arrow keys are.
 
 void Game::play()
 {
+    int count = 3;
+    srand(time(0));
     for(int r = 0; r < WALL_ROWS; r++)
     {
         for(int c = 0; c < WALL_COLS; c++)
         {
+
             wall[r][c].setColor(ink(rand()%15+1));
             wall[r][c].setLoc(Point(c * 21 + 14, r * 3 + 12));
             wall[r][c].draw(screen);
@@ -49,8 +51,7 @@ void Game::play()
 
     while(!gameOver)
     {
-
-
+        gameBall.setOldDir(gameBall.getDir());
         if (kbhit())
         {
 
@@ -75,7 +76,7 @@ void Game::play()
             gameBall.setDir(Reflections.leftBoundaryReflection(gameBall));
             gameBall.setOldDir(gameBall.getDir());
         }
-        if (gameBall.ballHitTopWall(gameBall, 3))
+        if (gameBall.ballHitTopWall(gameBall, 4))
         {
             gameBall.setDir(Reflections.topBoundaryReflection(gameBall));
             gameBall.setOldDir(gameBall.getDir());
@@ -101,9 +102,18 @@ void Game::play()
             gameBall.move();
             Sleep(10);
 
+
         if(gameBall.ballHitBottomWall(gameBall, 97))
         {
-            gameOver = true;
+            count --;
+            cout << "Lives = " << count;
+            Sleep(500);
+            if(count == 0)
+            {
+                gameOver = true;
+            }
+            gameBall.setLoc(point);
+            gameBall.setDir(3.14/2);
         }
         for(int r = 0; r < WALL_ROWS; r++)
         {
@@ -111,11 +121,28 @@ void Game::play()
             {
                 if (wall[r][c].getColor() !=  black)
                 {
-                    if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY() )
+                    if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 10)
                     {
-                        if(gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() - 10)
+
+                        if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
                         {
-                            gameBall.setDir(-gameBall.getDir());
+                            gameBall.setDir(wall[r][c].reflectionsForTopandBottomOfBricks(gameBall));
+                            if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 3 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
+                            {
+                                if(gameBall.getOldDir() > 2*3.14)
+                                {
+                                    gameBall.setOldDir(gameBall.getOldDir() - 2*3.14);
+                                }
+                                if(gameBall.getOldDir() < 0)
+                                {
+                                    gameBall.setOldDir(gameBall.getOldDir() + 2*3.14);
+                                }
+                                gameBall.setDir(wall[r][c].reflectionsForSideOfBricks(gameBall));
+                                gameBall.setOldDir(gameBall.getDir() + 2*3.14);
+                                wall[r][c].setColor(black);
+                                wall[r][c].draw(screen);
+                            }
+                            gameBall.setOldDir(gameBall.getDir() + 2*3.14);
                             wall[r][c].setColor(black);
                             wall[r][c].draw(screen);
                         }
@@ -123,8 +150,23 @@ void Game::play()
                 }
             }
         }
+       /* for(int r = 0; r < WALL_ROWS; r++)
+        {
+            for(int c = 0; c < WALL_COLS; c++)
+            {
+                if (wall[r][c].getColor() !=  black)
+                {
+                    if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 13 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 11)
+                    {
+                        if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
+                        {
 
-
+                        }
+                    }
+                }
+            }
+        }
+*/
 
     }
 
