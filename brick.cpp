@@ -41,3 +41,30 @@ char brick::getShape()
 {
     return shape;
 }
+double brick::reflectionsForSideOfBricks(ball b)
+{
+    double sReflection;
+    if(b.getOldDir() > 2*3.14)
+    {
+        sReflection = b.getOldDir() - 2*3.14;
+    }
+    if(b.getOldDir() < 0)
+    {
+        sReflection = b.getOldDir() + 2*3.14;
+    }
+    if (b.getOldDir() >= 0 && b.getOldDir() <= 3.14)
+    {
+        sReflection = 3.14 - b.getOldDir();
+    }
+    if (b.getOldDir() >= 3.14 && b.getOldDir() <= 2*3.14)
+    {
+        sReflection = 3.14 - b.getOldDir();
+    }
+    return sReflection;
+}
+double brick::reflectionsForTopandBottomOfBricks(ball b)
+{
+    double brReflection;
+    brReflection = -b.getOldDir();
+    return brReflection;
+}
