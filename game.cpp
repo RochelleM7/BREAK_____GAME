@@ -51,7 +51,6 @@ void Game::play()
 
     while(!gameOver)
     {
-        paddle.draw(screen); //makes paddle appear at start
         gameBall.setOldDir(gameBall.getDir());
         if (kbhit())
         {
@@ -100,6 +99,7 @@ void Game::play()
 
             gameBall.erase(screen);
             gameBall.draw(screen);
+            gameBall.setOldLoc(gameBall.getLoc());
             gameBall.move();
             Sleep(10);
 
@@ -122,48 +122,45 @@ void Game::play()
             {
                 if (wall[r][c].getColor() !=  black)
                 {
-                    if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 10)
-                    {
+                    
 
-                        if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
-                        {
-                            gameBall.setDir(wall[r][c].reflectionsForTopandBottomOfBricks(gameBall));
-                            if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
+                            if((gameBall.getOldLoc().getX() <= wall[r][c].getLoc().getX() - 8 || gameBall.getOldLoc().getX() >= wall[r][c].getLoc().getX() + 10) &&
+                               (gameBall.getOldLoc().getY() <= wall[r][c].getLoc().getY() + 5 && gameBall.getOldLoc().getY() >= wall[r][c].getLoc().getY() - 5))
                             {
-                                if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 3 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY() + 1)
-                               {
-                                    gameBall.keepBallinZerotoTwoPi(gameBall);
-                                    gameBall.setDir(wall[r][c].reflectionsForSideOfBricks(gameBall));
-                                    gameBall.setOldDir(gameBall.getDir() + 2*3.14);
-                                    wall[r][c].setColor(black);
-                                    wall[r][c].draw(screen);
-                               }
-                            }
-                            gameBall.setOldDir(gameBall.getDir() + 2*3.14);
-                            wall[r][c].setColor(black);
-                            wall[r][c].draw(screen);
-                        }
-                    }
-                }
-            }
-        }
-       /* for(int r = 0; r < WALL_ROWS; r++)
-        {
-            for(int c = 0; c < WALL_COLS; c++)
-            {
-                if (wall[r][c].getColor() !=  black)
-                {
-                    if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 13 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 11)
-                    {
-                        if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
-                        {
+                                if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 10)
+                                {
+                                    if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
+                                        {
+                                            gameBall.keepBallinZerotoTwoPi(gameBall);
+                                            gameBall.setDir(wall[r][c].reflectionsForSideOfBricks(gameBall));
 
-                        }
-                    }
+                                            gameBall.setOldDir(gameBall.getDir() + 2*3.14);
+                                            wall[r][c].setColor(black);
+                                            wall[r][c].draw(screen);
+                                        }
+                                }
+                            }
+                            else
+                            {
+                                if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 10)
+                                {
+                                    if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
+                                        {
+                                            gameBall.setDir(wall[r][c].reflectionsForTopandBottomOfBricks(gameBall));
+                                            gameBall.setOldDir(gameBall.getDir() + 2*3.14);
+                                            wall[r][c].setColor(black);
+                                            wall[r][c].draw(screen);
+                                        }
+                                }
+                            }
+
+
+                        
+                    
                 }
             }
         }
-*/
+
 
     }
 
