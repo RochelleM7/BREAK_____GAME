@@ -107,7 +107,7 @@ void Game::play()
         {
             count --;
             cout << "Lives = " << count;
-            Sleep(500);
+            Sleep(2000);
             if(count == 0)
             {
                 gameOver = true;
@@ -127,20 +127,16 @@ void Game::play()
                         if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
                         {
                             gameBall.setDir(wall[r][c].reflectionsForTopandBottomOfBricks(gameBall));
-                            if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 3 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
+                            if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
                             {
-                                if(gameBall.getOldDir() > 2*3.14)
-                                {
-                                    gameBall.setOldDir(gameBall.getOldDir() - 2*3.14);
-                                }
-                                if(gameBall.getOldDir() < 0)
-                                {
-                                    gameBall.setOldDir(gameBall.getOldDir() + 2*3.14);
-                                }
-                                gameBall.setDir(wall[r][c].reflectionsForSideOfBricks(gameBall));
-                                gameBall.setOldDir(gameBall.getDir() + 2*3.14);
-                                wall[r][c].setColor(black);
-                                wall[r][c].draw(screen);
+                                if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 3 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY() + 1)
+                               {
+                                    gameBall.keepBallinZerotoTwoPi(gameBall);
+                                    gameBall.setDir(wall[r][c].reflectionsForSideOfBricks(gameBall));
+                                    gameBall.setOldDir(gameBall.getDir() + 2*3.14);
+                                    wall[r][c].setColor(black);
+                                    wall[r][c].draw(screen);
+                               }
                             }
                             gameBall.setOldDir(gameBall.getDir() + 2*3.14);
                             wall[r][c].setColor(black);
