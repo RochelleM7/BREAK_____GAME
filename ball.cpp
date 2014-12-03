@@ -116,3 +116,14 @@ double ball::getOldDir()
 {
     return oldDir;
 }
+double ball::keepBallinZerotoTwoPi(ball b)
+{
+    if(b.getOldDir() > 2*3.14)
+    {
+        b.setOldDir(b.getOldDir() - 2*3.14);
+    }
+    if(b.getOldDir() < 0)
+    {
+        b.setOldDir(b.getOldDir() + 2*3.14);
+    }
+}
