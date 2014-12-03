@@ -51,6 +51,7 @@ void Game::play()
 
     while(!gameOver)
     {
+        paddle.draw(screen); //makes paddle appear at start
         gameBall.setOldDir(gameBall.getDir());
         if (kbhit())
         {
