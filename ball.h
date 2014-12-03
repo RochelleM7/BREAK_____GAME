@@ -6,7 +6,7 @@
 class ball
 {
     public:
-        ball(Point = Point(), ink = red, char = SQUARE, double = .2, double = 3.14/2);
+        ball(Point = Point(), ink = red, char = SQUARE, double = .2, double = 7*3.14/4);
         void draw(Plotter&);
         void move();
         Point getLoc();
@@ -23,7 +23,7 @@ class ball
         void setDir(double d);
         double getDir();
         Point getOldLoc();
-        void setOldLoc(Point loc);
+        void setOldLoc(Point);
         void setOldDir(double d);
         double getOldDir();
         double keepBallinZerotoTwoPi(ball b);
