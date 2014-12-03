@@ -26,6 +26,7 @@ class ball
         void setOldLoc(Point loc);
         void setOldDir(double d);
         double getOldDir();
+        double keepBallinZerotoTwoPi(ball b);
 
     private:
         Point loc, oldLoc;
