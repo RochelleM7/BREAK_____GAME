@@ -24,7 +24,7 @@ class sideBoundariesReflections
   // pre:         object exists
   // post:        return the reflection of the right boundary
   double rightBoundaryReflection(ball b);
-
+  
 };
 
 #endif // WALL_H_INCLUDED
