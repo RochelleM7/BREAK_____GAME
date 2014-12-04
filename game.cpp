@@ -51,6 +51,7 @@ void Game::play()
 
     while(!gameOver)
     {
+        paddle.draw(screen);
         gameBall.setOldDir(gameBall.getDir());
         if (kbhit())
         {
@@ -100,7 +101,7 @@ void Game::play()
             gameBall.erase(screen);
             gameBall.draw(screen);
             gameBall.setOldLoc(gameBall.getLoc());
-            gameBall.move();
+            gameBall.move(1, 1);
             Sleep(10);
 
 
@@ -122,41 +123,26 @@ void Game::play()
             {
                 if (wall[r][c].getColor() !=  black)
                 {
-                    
-
-                            if((gameBall.getOldLoc().getX() <= wall[r][c].getLoc().getX() - 8 || gameBall.getOldLoc().getX() >= wall[r][c].getLoc().getX() + 10) &&
-                               (gameBall.getOldLoc().getY() <= wall[r][c].getLoc().getY() + 5 && gameBall.getOldLoc().getY() >= wall[r][c].getLoc().getY() - 5))
+                           switch(wall[r][c].ballHitBrick(gameBall))
+                           {
+                               case 1: gameBall.setDir(gameBall.newDir());
+                               case 2: gameBall.setDir(gameBall.newDir());
+                                wall[r][c].setColor(black);
+                                    wall[r][c].draw(screen);
+                           }
+                            if((gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 10) && (gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 12))
                             {
-                                if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 10)
+                                if(gameBall.getLoc().getY() >= wall[r][c].getLoc().getY() && gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4)
                                 {
-                                    if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
-                                        {
-                                            gameBall.keepBallinZerotoTwoPi(gameBall);
-                                            gameBall.setDir(wall[r][c].reflectionsForSideOfBricks(gameBall));
-
-                                            gameBall.setOldDir(gameBall.getDir() + 2*3.14);
-                                            wall[r][c].setColor(black);
-                                            wall[r][c].draw(screen);
-                                        }
-                                }
-                            }
-                            else
-                            {
-                                if(gameBall.getLoc().getX() <= wall[r][c].getLoc().getX() + 12 && gameBall.getLoc().getX() >= wall[r][c].getLoc().getX() - 10)
-                                {
-                                    if(gameBall.getLoc().getY() <= wall[r][c].getLoc().getY() + 4 && gameBall.getLoc().getY() >= wall[r][c].getLoc().getY())
-                                        {
-                                            gameBall.setDir(wall[r][c].reflectionsForTopandBottomOfBricks(gameBall));
-                                            gameBall.setOldDir(gameBall.getDir() + 2*3.14);
-                                            wall[r][c].setColor(black);
-                                            wall[r][c].draw(screen);
-                                        }
+                                    gameBall.setDir(-gameBall.getDir());
+                                    wall[r][c].setColor(black);
+                                    wall[r][c].draw(screen);
                                 }
                             }
 
 
-                        
-                    
+
+
                 }
             }
         }
@@ -165,3 +151,4 @@ void Game::play()
     }
 
     }
+
