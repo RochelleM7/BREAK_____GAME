@@ -25,10 +25,10 @@ void ball::setOldLoc(Point loc)
 {
     oldLoc = loc;
 }
-void ball::move()
+void ball::move(int n, int m)
 {
-        loc.setX(loc.getX() + speed * cos(dir));
-        loc.setY(loc.getY() - speed * sin(dir));
+        loc.setX((loc.getX() + speed * cos(dir)) * n);
+        loc.setY((loc.getY() - speed * sin(dir)) * m);
 }
 Point ball::getLoc()
 {
@@ -116,14 +116,35 @@ double ball::getOldDir()
 {
     return oldDir;
 }
-double ball::keepBallinZerotoTwoPi(ball b)
+double ball::newDir()
 {
-    if(b.getOldDir() > 2*3.14)
+    double reflection;
+    while(getOldDir() >2*3.14)
     {
-        b.setOldDir(b.getOldDir() - 2*3.14);
+        setOldDir(getOldDir() - (2*3.14));
     }
-    if(b.getOldDir() < 0)
+    while(getOldDir() < 0)
     {
-        b.setOldDir(b.getOldDir() + 2*3.14);
+        setOldDir(getOldDir() + 2*3.14);
+    }
+    if (getOldDir() >= 0 && getOldDir() <= 3.14)
+    {
+        reflection = 3.14 - getOldDir();
+    }
+    if (getOldDir() >= 3.14 && getOldDir() <= 2*3.14)
+    {
+        reflection = 3.14 - getOldDir();
+    }
+    return reflection;
+}
+double ball::keepBallinZerotoTwoPi()
+{
+    if(getOldDir() > 2*3.14)
+    {
+        setOldDir(getOldDir() - 2*3.14);
+    }
+    if(getOldDir() < 0)
+    {
+        setOldDir(getOldDir() + 2*3.14);
     }
 }
