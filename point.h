@@ -39,10 +39,10 @@ class Point
         // post:        object exists
         void setY (double);
         
-        // description: calculate the distance
+        // description: calculate the distance between point x and y
         // return:      double                                        
         // pre:         object exists                          
-        // post:        the value of distance
+        // post:        return the value of distance between point x and y
         double distance (Point p);
 
     private:
