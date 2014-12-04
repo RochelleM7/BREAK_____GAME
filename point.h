@@ -7,7 +7,6 @@ using namespace std;
 
 class Point
 {
-
     public:
         // description: set default value of point x and y
         // return:      no return type                                        
@@ -50,6 +49,4 @@ class Point
 
 };
 
-
 #endif // POINT_H_INCLUDED
-
