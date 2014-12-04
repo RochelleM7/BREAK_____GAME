@@ -1,3 +1,14 @@
+/*
+Authors:             Chuks Egbuchunam, Zehao Huang, Jiaqi Ma
+                     Brandon Scheitlin, Trent Matthews
+Assignment Title:    Breakout
+Assignment Details:  Make a game that breaks blocks
+                     with a ball and paddle.
+Due Date:            12/05/2014
+Date Created:        11/11/2014
+Date Last Modified:  12/04/2014
+*/
+
 #ifndef WALL_H_INCLUDED
 #define WALL_H_INCLUDED
 
